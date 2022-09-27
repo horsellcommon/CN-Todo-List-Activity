@@ -15,3 +15,15 @@ body{
   color: blue;
   align-self: center;
 }
+#inputbutton{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin: auto;
+  width: 50%;
+}
+#mapper{
+  display: flex;
+  font-family: cursive;
+  font-size: x-large;
+}
