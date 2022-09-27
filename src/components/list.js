@@ -29,7 +29,7 @@ return (
         <div id="mapper">
             <ul>
                 {list.map((item, chindex) => {
-                    return <li id="strike" key={item} onClick={crossOutItem}>{item}</li>;
+                    return <li key={item} onClick={crossOutItem}>{item}</li>;
                 })}
             </ul>
         </div>
