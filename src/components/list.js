@@ -11,11 +11,14 @@ const addToList = () => {
     setInput("");
   };
 
-const deleteItem = (index) => {
-    const temporary = [...list];
-    temporary.splice(index, 1);
-    setList(temporary);
-  };
+  const crossOutItem = (event) => {
+    if(event.target.style.textDecoration) {
+        event.target.style.removeProperty('text-decoration')
+    } else {
+        event.target.style.setProperty('text-decoration', 'line-through')
+    }
+}
+
 
 return (
     <div>
@@ -26,7 +29,7 @@ return (
         <div id="mapper">
             <ul>
                 {list.map((item, chindex) => {
-                    return <li key={item} onClick={() => deleteItem(chindex)}>{item}</li>;
+                    return <li id="strike" key={item} onClick={crossOutItem}>{item}</li>;
                 })}
             </ul>
         </div>
