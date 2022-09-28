@@ -32,3 +32,8 @@ body{
   padding-right: 10px;
   margin-left: 10px;
 }
+.centered{
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
