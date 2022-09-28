@@ -1,18 +1,22 @@
 import { useState } from "react";
-
 const enterInput = document.getElementById("inputtoList")
 
 
 const InputText = () => {
 const [input, setInput]  = useState("")
 const [list, setList] = useState([]);
+const [list2, setList2] = useState([])
 
 const addToList = () => {
     const temporary = [...list];
     temporary.push(input);
     setList(temporary);
     setInput("");
-  };
+};
+const addToNewList = () => {
+    const newList = [...list];
+    setList2(newList);
+};
 
 const deleteItem = (index) => {
     const temp = [...list];
@@ -52,6 +56,17 @@ return (
                     return <li key={item} onClick={crossOutItem}>{item}<button onClick={deleteItem}>DEL</button></li>;                
                 })}
             </ul>
+        </div>
+        <div>
+            <button class="centered" onClick={addToNewList}>PUSH TO COMPLETED LIST</button>
+            <h1 class="centered"><u>DONE</u></h1>
+            <div id="mapper">
+                <ul>
+                    {list2.map((item, chindex) => {
+                        return <li key={item}>{item}</li>;                
+                    })}
+                </ul>
+            </div>
         </div>
     </div>
 )

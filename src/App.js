@@ -1,6 +1,5 @@
 import './App.css';
 import InputText from './components/List';
-import FinishedList from './components/Completed';
 
 
 function App() {
@@ -8,7 +7,6 @@ function App() {
     <div id="main-box">
       <h1 id="header">TO-DO LIST</h1>
       <InputText />
-      <FinishedList />
     </div>
   )
 }
