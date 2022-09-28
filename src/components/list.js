@@ -15,7 +15,7 @@ const addToList = () => {
 
 const enterSubmit = () => {
     enterInput.addEventListener("keypress", (event) => {
-        if (event.which == 13){
+        if (event.which === 13){
             const temporary = [...list];
             temporary.push(input);
             setList(temporary);
@@ -38,12 +38,11 @@ return (
         <div id="inputbutton">
             <input id="inputtoList" type="text" value={input} onChange={(e) => setInput(e.target.value)} onKeyPress={(e) => enterSubmit(e)} />
             <button onClick={addToList}>Add Item to List</button>
-            <button>Remove Strikethrough Items</button>
         </div>
         <div id="mapper">
             <ul>
                 {list.map((item, chindex) => {
-                    return <li key={item} onClick={crossOutItem}>{item}</li>;
+                    return <li key={item} onClick={crossOutItem}>{item}<button id="listdeleteitem">DEL</button></li>;                
                 })}
             </ul>
         </div>
