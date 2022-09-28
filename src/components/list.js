@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const enterInput = document.getElementById("inputtoList")
-const deleteButton = document.getElementById("listdeleteitem")
+
 
 const InputText = () => {
 const [input, setInput]  = useState("")
@@ -49,7 +49,7 @@ return (
         <div id="mapper">
             <ul>
                 {list.map((item, chindex) => {
-                    return <li key={item} onClick={crossOutItem}>{item}<button id="listdeleteitem" onClick={deleteItem}>DEL</button></li>;                
+                    return <li key={item} onClick={crossOutItem}>{item}<button onClick={deleteItem}>DEL</button></li>;                
                 })}
             </ul>
         </div>

@@ -1,5 +1,5 @@
 import './App.css';
-import InputText from './components/list';
+import InputText from './components/List';
 
 
 function App() {
