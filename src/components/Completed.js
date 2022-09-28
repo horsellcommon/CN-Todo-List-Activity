@@ -11,8 +11,8 @@ const FinishedList = () => {
 
     return (
         <div>
-            <button onClick={addToList}>PUSH TO COMPLETED LIST</button>
-            <h1><u>DONE</u></h1>
+            <button class="centered" onClick={addToList}>PUSH TO COMPLETED LIST</button>
+            <h1 class="centered"><u>DONE</u></h1>
             <div id="mapper">
                 <ul>
                     {list.map((item, chindex) => {
