@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const enterInput = document.getElementById("inputtoList")
+const deleteButton = document.getElementById("listdeleteitem")
 
 const InputText = () => {
 const [input, setInput]  = useState("")
@@ -12,6 +13,12 @@ const addToList = () => {
     setList(temporary);
     setInput("");
   };
+
+const deleteItem = (index) => {
+    const temp = [...list];
+    temp.splice(index, 1);
+    setList(temp);
+};
 
 const enterSubmit = () => {
     enterInput.addEventListener("keypress", (event) => {
@@ -25,10 +32,10 @@ const enterSubmit = () => {
 }
 
 
-  const crossOutItem = (event) => {
+  const crossOutItem = (event) => { //More of an aesthetic addition at this point????
     if(event.target.style.textDecoration) {
         event.target.style.removeProperty('text-decoration')
-    } else {
+    } else{
         event.target.style.setProperty('text-decoration', 'line-through')
     }
 }
@@ -42,7 +49,7 @@ return (
         <div id="mapper">
             <ul>
                 {list.map((item, chindex) => {
-                    return <li key={item} onClick={crossOutItem}>{item}<button id="listdeleteitem">DEL</button></li>;                
+                    return <li key={item} onClick={crossOutItem}>{item}<button id="listdeleteitem" onClick={deleteItem}>DEL</button></li>;                
                 })}
             </ul>
         </div>
