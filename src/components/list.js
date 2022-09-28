@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const enterInput = document.getElementById("inputtoList")
+
 const InputText = () => {
 const [input, setInput]  = useState("")
 const [list, setList] = useState([]);
@@ -11,6 +13,18 @@ const addToList = () => {
     setInput("");
   };
 
+const enterSubmit = () => {
+    enterInput.addEventListener("keypress", (event) => {
+        if (event.which == 13){
+            const temporary = [...list];
+            temporary.push(input);
+            setList(temporary);
+            setInput("");
+        } else{}
+    })
+}
+
+
   const crossOutItem = (event) => {
     if(event.target.style.textDecoration) {
         event.target.style.removeProperty('text-decoration')
@@ -19,12 +33,12 @@ const addToList = () => {
     }
 }
 
-
 return (
     <div>
         <div id="inputbutton">
-            <input type="text" value={input} onChange={(e) => setInput(e.target.value)} />
+            <input id="inputtoList" type="text" value={input} onChange={(e) => setInput(e.target.value)} onKeyPress={(e) => enterSubmit(e)} />
             <button onClick={addToList}>Add Item to List</button>
+            <button>Remove Strikethrough Items</button>
         </div>
         <div id="mapper">
             <ul>
