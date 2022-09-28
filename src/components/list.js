@@ -1,17 +1,12 @@
-import { useEffect, useState } from "react";
-const enterInput = document.getElementById("inputtoList");
+import { useState } from "react";
 
 const InputText = () => {
   const [list, setList] = useState([]);
   const [list2, setList2] = useState([]);
   const [input, setInput] = useState("");
 
-  useEffect(() => {
-    console.log(input)
-    enterSubmit()
-    }, [input])
-
-  const addToList = () => {
+  const addToList = (e) => {
+    e.preventDefault()
     const temporary = [...list];
     temporary.push(input);
     setList(temporary);
@@ -29,22 +24,6 @@ const InputText = () => {
     setList(temp);
   };
 
-  const enterSubmit = () => {
-    enterInput.addEventListener("keypress", (event) => {
-      if (event.which === 13) {
-        const temporary = [...list];
-        temporary.push(input);
-        setList(temporary);
-        setInput("");
-      } else {
-      }
-    });
-  };
-
-  const inputFixer = (e) => {
-    setInput(e.target.value);
-  };
-
   //   const crossOutItem = (event) => { //More of an aesthetic addition at this point???? onClick={() => crossOutItem(chindex)}
   //     if(event.target.style.textDecoration) {
   //         event.target.style.removeProperty('text-decoration')
@@ -56,14 +35,10 @@ const InputText = () => {
   return (
     <div>
       <div id="inputbutton">
-        <input
-          id="inputtoList"
-          type="text"
-          value={input}
-          onChange={inputFixer}
-          onKeyPress={(e) => enterSubmit(e)}
-        />
-        <button onClick={addToList}>Add Item to List</button>
+        <form onSubmit={addToList}>
+        <input type="text" id="inputBox" value={input} onChange={(event) => setInput(event.target.value)} />
+        <button>Add Item to List</button>
+      </form>
       </div>
       <div id="mapper">
         <ul>
