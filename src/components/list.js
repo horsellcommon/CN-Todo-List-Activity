@@ -72,7 +72,7 @@ const FirstList = () => {
       </div>
       <div>
         <button className="centered" onClick={addToNewList}>
-          PUSH TO COMPLETED LIST
+          PUSH FIRST ITEM TO COMPLETED LIST
         </button>
         <br />
         <div className="bigunderline"></div>
