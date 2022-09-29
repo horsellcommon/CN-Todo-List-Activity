@@ -53,8 +53,19 @@ h3{
 .items{
   color: blue;
 }
-#bigunderline{
+.bigunderline{
   display: flex;
   border: solid thick black;
   background-color: black;
+}
+#footer{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  font-size: xx-large;
+  border: thick solid green;
+  width: 33%;
+}
+#strikethrough{
+  text-decoration: line-through;
 }

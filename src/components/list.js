@@ -75,7 +75,7 @@ const FirstList = () => {
           PUSH TO COMPLETED LIST
         </button>
         <br />
-        <div id="bigunderline"></div>
+        <div className="bigunderline"></div>
         <br />
         <h1 className="centered">
           <u>DONE</u>
@@ -83,7 +83,7 @@ const FirstList = () => {
         <div id="mapper">
           <ul>
             {list2.map((item, chindex) => {
-              return <li className="items" key={item}>{item}</li>;
+              return <li id="strikethrough"className="items" key={item}>{item}</li>;
             })}
           </ul>
         </div>
@@ -91,6 +91,8 @@ const FirstList = () => {
           <button onClick={clearList}>CLEAR LIST</button>
         </div>
       </div>
+      <br />
+      <div className="bigunderline"></div>
     </div>
   );
 };
