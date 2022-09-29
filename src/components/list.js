@@ -60,7 +60,7 @@ const FirstList = () => {
         <ul>
           {list.map((item, chindex) => {
             return (
-              <li onClick={crossOutItem} key={item}>
+              <li className="items" onClick={crossOutItem} key={item}>
                 {item}
                 <button onClick={() => deleteItem(chindex)}>
                   Remove item?
@@ -74,13 +74,16 @@ const FirstList = () => {
         <button className="centered" onClick={addToNewList}>
           PUSH TO COMPLETED LIST
         </button>
+        <br />
+        <div id="bigunderline"></div>
+        <br />
         <h1 className="centered">
           <u>DONE</u>
         </h1>
         <div id="mapper">
           <ul>
             {list2.map((item, chindex) => {
-              return <li key={item}>{item}</li>;
+              return <li className="items" key={item}>{item}</li>;
             })}
           </ul>
         </div>
