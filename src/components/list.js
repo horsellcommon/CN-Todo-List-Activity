@@ -62,6 +62,7 @@ const FirstList = () => {
             return (
               <li className="items" onClick={crossOutItem} key={item}>
                 {item}
+                <button onClick={() => addToNewList(chindex)}>Push to completed list</button>
                 <button onClick={() => deleteItem(chindex)}>
                   Remove item?
                 </button>
