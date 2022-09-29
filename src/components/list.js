@@ -1,8 +1,8 @@
 import { useState } from "react";
-import CompletedList from "./CompletedList";
 
 const FirstList = () => {
   const [list, setList] = useState([]);
+  const [list2, setList2] = useState([]);
   const [input, setInput] = useState("");
 
   const addToList = (e) => {
@@ -28,6 +28,21 @@ const FirstList = () => {
     }
   };
 
+  const addToNewList = (index) => {
+    const temp = [...list];
+    const removedItem = temp.splice(index, 1);
+    setList(temp);
+    const temp2 = [...list2];
+    temp2.push(...removedItem);
+    setList2(temp2);
+  };
+
+  const clearList = () => {
+    const emptylist = [...list2];
+    emptylist.splice(0);
+    setList2(emptylist);
+  };
+
   return (
     <div>
       <div id="inputbutton">
@@ -45,7 +60,7 @@ const FirstList = () => {
         <ul>
           {list.map((item, chindex) => {
             return (
-              <li onClick={crossOutItem} key={item}>
+              <li className="items" onClick={crossOutItem} key={item}>
                 {item}
                 <button onClick={() => deleteItem(chindex)}>
                   Remove item?
@@ -55,7 +70,27 @@ const FirstList = () => {
           })}
         </ul>
       </div>
-      <CompletedList />
+      <div>
+        <button className="centered" onClick={addToNewList}>
+          PUSH TO COMPLETED LIST
+        </button>
+        <br />
+        <div id="bigunderline"></div>
+        <br />
+        <h1 className="centered">
+          <u>DONE</u>
+        </h1>
+        <div id="mapper">
+          <ul>
+            {list2.map((item, chindex) => {
+              return <li className="items" key={item}>{item}</li>;
+            })}
+          </ul>
+        </div>
+        <div className="centered">
+          <button onClick={clearList}>CLEAR LIST</button>
+        </div>
+      </div>
     </div>
   );
 };

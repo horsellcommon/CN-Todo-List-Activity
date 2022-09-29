@@ -1,12 +1,13 @@
 import './App.css';
 import FirstList from './components/List';
-import CompletedList from './components/CompletedList';
+import Header from './components/Header';
 
 
 function App() {
   return (
     <div id="main-box">
-      <h1 id="header">TO-DO LIST</h1>
+      <Header />
+      <br />
       <FirstList />
     </div>
   )
