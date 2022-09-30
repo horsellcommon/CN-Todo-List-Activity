@@ -19,15 +19,6 @@ const FirstList = () => {
     setList(temp);
   };
 
-  // const crossOutItem = (event) => {
-  //   //More of an aesthetic addition at this point???? onClick={() => crossOutItem(chindex)}
-  //   if (event.target.style.textDecoration) {
-  //     event.target.style.removeProperty("text-decoration");
-  //   } else {
-  //     event.target.style.setProperty("text-decoration", "line-through");
-  //   }
-  // };
-
   const addToNewList = (index) => {
     const temp = [...list];
     const removedItem = temp.splice(index, 1);
@@ -60,14 +51,15 @@ const FirstList = () => {
         <ul>
           {list.map((item, chindex) => {
             return (
-              
+              <div>
               <li className="items" key={item}>
                 {item}
-                <button onClick={() => addToNewList(chindex)}>Push to completed list</button>
-                <button onClick={() => deleteItem(chindex)}>
-                  Remove item?
-                </button>
               </li>
+              <button onClick={() => addToNewList(chindex)}>Push to completed list</button>
+              <button onClick={() => deleteItem(chindex)}>
+                Remove item?
+              </button>
+              </div>
               );
           })}
         </ul>
