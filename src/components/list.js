@@ -4,6 +4,9 @@ const FirstList = () => {
   const [list, setList] = useState([]);
   const [list2, setList2] = useState([]);
   const [input, setInput] = useState("");
+  const [edit, setEdit] = useState(false);
+  const [selected, setSelected] = useState("");
+  const [newInput, setNewInput] = useState("");
 
   const addToList = (e) => {
     e.preventDefault();
@@ -28,16 +31,39 @@ const FirstList = () => {
     setList2(temp2);
   };
 
+  const editItem = (index) => {
+    if (!edit) {
+      setEdit(true);
+      setSelected(list[index]);
+    } else {
+      if (newInput !== "") {
+        setEdit(false);
+        const temp = [...list];
+        temp[index] = newInput;
+        setList(temp);
+      }
+    }
+    setNewInput("");
+  };
+
   const clearList = () => {
     const emptylist = [...list2];
     emptylist.splice(0);
     setList2(emptylist);
   };
 
+  const crossOutItem = (event) => {
+    if (event.target.style.textDecoration) {
+      event.target.style.removeProperty("text-decoration");
+    } else {
+      event.target.style.setProperty("text-decoration", "line-through");
+    }
+  };
+
   return (
     <div>
       <div id="inputbutton">
-          <form onSubmit={addToList}>
+        <form onSubmit={addToList}>
           <input
             type="text"
             value={input}
@@ -52,15 +78,34 @@ const FirstList = () => {
           {list.map((item, chindex) => {
             return (
               <div>
-              <li className="items" key={item}>
-                {item}
-              </li>
-              <button onClick={() => addToNewList(chindex)}>Push to completed list</button>
-              <button onClick={() => deleteItem(chindex)}>
-                Remove item?
-              </button>
+                {edit && selected === item ? (
+                  <input
+                    type="text"
+                    defaultValue={item}
+                    onChange={(e) => setNewInput(e.target.value)}
+                  />
+                ) : (
+                  <div>
+                    <li
+                      className="items"
+                      onClick={() => crossOutItem(chindex)}
+                      key={item}
+                    >
+                      {item}
+                    </li>
+                  </div>
+                )}
+                <button onClick={() => addToNewList(chindex)}>
+                  Push to completed list
+                </button>
+                <button onClick={() => deleteItem(chindex)}>
+                  Remove item?
+                </button>
+                <button id="edit" onClick={() => editItem(chindex)}>
+                  {edit ? "Save" : "Edit"}
+                </button>
               </div>
-              );
+            );
           })}
         </ul>
       </div>
@@ -77,7 +122,11 @@ const FirstList = () => {
         <div id="mapper">
           <ul>
             {list2.map((item, chindex) => {
-              return <li id="strikethrough"className="items" key={item}>{item}</li>;
+              return (
+                <li id="strikethrough" className="items" key={item}>
+                  {item}
+                </li>
+              );
             })}
           </ul>
         </div>
