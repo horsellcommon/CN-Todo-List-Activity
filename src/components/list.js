@@ -19,14 +19,14 @@ const FirstList = () => {
     setList(temp);
   };
 
-  const crossOutItem = (event) => {
-    //More of an aesthetic addition at this point???? onClick={() => crossOutItem(chindex)}
-    if (event.target.style.textDecoration) {
-      event.target.style.removeProperty("text-decoration");
-    } else {
-      event.target.style.setProperty("text-decoration", "line-through");
-    }
-  };
+  // const crossOutItem = (event) => {
+  //   //More of an aesthetic addition at this point???? onClick={() => crossOutItem(chindex)}
+  //   if (event.target.style.textDecoration) {
+  //     event.target.style.removeProperty("text-decoration");
+  //   } else {
+  //     event.target.style.setProperty("text-decoration", "line-through");
+  //   }
+  // };
 
   const addToNewList = (index) => {
     const temp = [...list];
@@ -46,7 +46,7 @@ const FirstList = () => {
   return (
     <div>
       <div id="inputbutton">
-        <form onSubmit={addToList}>
+          <form onSubmit={addToList}>
           <input
             type="text"
             value={input}
@@ -60,14 +60,15 @@ const FirstList = () => {
         <ul>
           {list.map((item, chindex) => {
             return (
-              <li className="items" onClick={crossOutItem} key={item}>
+              
+              <li className="items" key={item}>
                 {item}
                 <button onClick={() => addToNewList(chindex)}>Push to completed list</button>
                 <button onClick={() => deleteItem(chindex)}>
                   Remove item?
                 </button>
               </li>
-            );
+              );
           })}
         </ul>
       </div>
