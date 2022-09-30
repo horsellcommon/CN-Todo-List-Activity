@@ -88,7 +88,7 @@ const FirstList = () => {
                   <div>
                     <li
                       className="items"
-                      onClick={() => crossOutItem(chindex)}
+                      onClick={crossOutItem}
                       key={item}
                     >
                       {item}
